@@ -64,10 +64,46 @@
   .title .sub { font-family: var(--font-t); font-weight: 600; font-size: 27px; letter-spacing: 0.18em;
     text-transform: uppercase; color: var(--muted); margin-top: 8px; }
 
-  .trophy { position: absolute; left: 50%; top: 300px; transform: translateX(-50%); z-index: 2; }
-  .trophy image-slot { display: block; width: 340px; height: 340px; }
-  .trophy .cap { text-align: center; font-size: 13px; color: var(--muted2); letter-spacing: 0.18em;
-    text-transform: uppercase; margin-top: 12px; font-weight: 700; }
+  /* NEXT MATCH DAY CARD (centre) */
+  #nextday { position: absolute; left: 50%; top: 250px; transform: translateX(-50%);
+    width: 432px; z-index: 4; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 18px; padding: 18px 20px; box-shadow: 0 18px 50px rgba(0,0,0,0.42); }
+  #nextday .nd-top { display: flex; flex-direction: column; gap: 2px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line2); }
+  #nextday .nd-label { font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); }
+  #nextday .nd-date { font-family: var(--font-t); font-weight: 600; font-size: 27px; color: var(--text); }
+  #nextday .nd-date b { font-weight: 700; }
+  #nextday .nd-count { display: flex; flex-direction: column; gap: 8px; align-items: center;
+    padding: 13px 0; border-bottom: 1px solid var(--line2); }
+  #nextday .cd-to { font-size: 12px; color: var(--muted); font-weight: 600; text-align: center; }
+  #nextday .cd-to b { color: var(--text); font-weight: 700; }
+  #nextday .cd-units { display: flex; gap: 10px; }
+  #nextday .cseg { display: flex; flex-direction: column; align-items: center; min-width: 48px;
+    background: var(--ink); border: 1px solid var(--line); border-radius: 9px; padding: 7px 4px; }
+  #nextday .cseg b { font-family: var(--font-t); font-weight: 700; font-size: 29px; line-height: 1; color: var(--gold); }
+  #nextday .cseg i { font-style: normal; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted2); margin-top: 4px; }
+  #nextday .kob { font-family: var(--font-t); font-weight: 700; font-size: 22px; color: var(--green); }
+  #nextday .nd-list { display: flex; flex-direction: column; padding-top: 6px; }
+  #nextday .nd-row { display: grid; grid-template-columns: 52px 1fr auto; align-items: center; gap: 10px;
+    padding: 7px 4px; border-top: 1px solid var(--line2); cursor: pointer; border-radius: 6px; }
+  #nextday .nd-row:first-child { border-top: none; }
+  #nextday .nd-row:hover { background: var(--panel2); }
+  #nextday .nd-t { font-family: var(--font-t); font-weight: 700; font-size: 16px; color: var(--gold); }
+  #nextday .nd-m { font-weight: 700; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #nextday .nd-m em { font-style: normal; color: var(--muted2); font-weight: 600; margin: 0 5px; }
+  #nextday .nd-g { font-family: var(--font-t); font-size: 11px; color: var(--muted2); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em; }
+  #nextday .nd-more { text-align: center; font-size: 11px; color: var(--muted2); padding-top: 8px; }
+  #nextday .nd-done { text-align: center; font-family: var(--font-t); font-weight: 700; font-size: 22px; padding: 18px; }
+
+  /* TIMEZONE SWITCHER */
+  #tzpick { position: absolute; left: 22px; top: 22px; z-index: 10; display: flex; align-items: center;
+    gap: 9px; background: var(--panel); border: 1px solid var(--line); border-radius: 100px; padding: 6px 8px 6px 15px; }
+  #tzpick .tzlab { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); }
+  #tzpick select { font-family: var(--font-d); font-weight: 700; font-size: 13px; color: var(--text);
+    background: var(--ink); border: 1px solid var(--line); border-radius: 100px; padding: 6px 11px; cursor: pointer; }
 
   /* GROUP PANELS */
   .gpanel { position: absolute; top: 170px; bottom: 70px; width: 300px;
@@ -101,6 +137,41 @@
   .grow .gr.done { color: var(--text); }
   .grow .gr.live { color: var(--green); animation: blink 1s infinite; }
   .wcell { display: none; }
+  /* GROUP — WHO'S THROUGH */
+  .gstand { display: flex; align-items: center; gap: 10px; padding: 5px 11px;
+    border-top: 1px solid var(--line); background: rgba(0,0,0,0.20); }
+  .gstand .qln { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-t);
+    font-weight: 700; font-size: 12px; color: var(--text); }
+  .gstand .qln i { font-style: normal; color: var(--muted2); font-weight: 600; font-size: 10px; }
+  .gstand .qdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .gstand .q1 .qdot { background: var(--gold); }
+  .gstand .q2 .qdot { background: var(--muted); }
+  .gstand .qtag { margin-left: auto; font-size: 9px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted2); }
+  .gstand.locked .qtag { color: var(--green); }
+  .gstand.locked .q1 .qdot { box-shadow: 0 0 0 2px var(--gold-d); }
+  /* GROUP CARD: fixtures/table toggle */
+  .ghead .gtog { margin-left: auto; display: flex; gap: 3px; background: rgba(0,0,0,0.20);
+    border-radius: 7px; padding: 2px; }
+  .ghead .gtog button { font-family: var(--font-d); font-weight: 800; font-size: 10px;
+    border: none; background: none; color: rgba(0,0,0,0.55); padding: 3px 8px; border-radius: 5px;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 0.04em; }
+  .ghead .gtog button.on { background: var(--ink); color: var(--text); }
+  /* GROUP STANDINGS TABLE */
+  .stable { display: flex; flex-direction: column; padding: 2px 0; }
+  .strow { display: grid; grid-template-columns: 17px 1fr 16px 16px 16px 16px 20px 20px 22px;
+    align-items: center; gap: 2px; padding: 5px 10px; font-family: var(--font-t); font-weight: 600;
+    font-size: 12px; border-top: 1px solid var(--line2); }
+  .strow span { text-align: center; color: var(--muted); }
+  .strow .stt { text-align: left; display: flex; align-items: center; gap: 5px; font-weight: 700; color: var(--text); }
+  .strow .stt i { font-style: normal; font-size: 13px; }
+  .strow .stp { color: var(--text); font-weight: 700; }
+  .strow.sthead { border-top: none; }
+  .strow.sthead span, .strow.sthead .stt { color: var(--muted2); font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.04em; font-family: var(--font-d); font-weight: 800; }
+  .strow.q1 { box-shadow: inset 3px 0 0 var(--gold); }
+  .strow.q2 { box-shadow: inset 3px 0 0 var(--muted); }
+  .stable .stnone { padding: 22px 10px; text-align: center; color: var(--muted2); font-size: 12px; }
 
   /* BRACKET BOXES */
   .kbox { position: absolute; z-index: 3; background: var(--panel); border: 1px solid var(--line);
@@ -122,6 +193,8 @@
     overflow: hidden; text-overflow: ellipsis; }
   .kteam .ksc { margin-left: auto; font-family: var(--font-t); font-weight: 700;
     font-size: 16px; color: var(--text); }
+  .kteam.real .knm { color: var(--text); }
+  .kteam.real .tk { background: var(--gold); color: var(--ink); }
   .kfoot { display: flex; justify-content: space-between; align-items: baseline;
     margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--line2); }
   .kfoot .kdate { font-family: var(--font-t); font-size: 15px; color: var(--muted);
@@ -167,7 +240,7 @@
   #scrim.on { display: flex; animation: fade 0.18s ease; }
   @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
   .detail { width: 480px; max-width: 100%; background: var(--panel); border: 1px solid var(--line);
-    border-radius: 18px; overflow: hidden; animation: pop 0.2s cubic-bezier(.2,.8,.3,1.2); }
+    border-radius: 18px; max-height: 88vh; overflow-y: auto; animation: pop 0.2s cubic-bezier(.2,.8,.3,1.2); }
   @keyframes pop { from { transform: scale(0.94) translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
   .dhead { padding: 18px 22px; display: flex; align-items: center; gap: 12px;
     border-bottom: 1px solid var(--line);
@@ -231,16 +304,17 @@
 
 <div id="stagewrap">
   <div id="poster">
+    <div id="tzpick">
+      <span class="tzlab">Times in</span>
+      <select id="tzsel"></select>
+    </div>
     <div class="title">
-      <div class="kick"><i></i>Brisbane Time · AEST (UTC+10)<i></i></div>
+      <div class="kick" id="tzkick"><i></i>Brisbane Time · AEST (UTC+10)<i></i></div>
       <h1>FIFA World Cup <b>2026</b></h1>
       <div class="sub">Match Schedule &amp; Bracket</div>
     </div>
 
-    <div class="trophy">
-      <image-slot id="trophy" shape="circle" placeholder="Drop a trophy / logo image"></image-slot>
-      <div class="cap">USA · Canada · Mexico</div>
-    </div>
+    <div id="nextday"></div>
 
     <div class="gpanel left" id="gpanelL"></div>
     <div class="gpanel right" id="gpanelR"></div>
@@ -429,6 +503,11 @@ const STAGE_NAME = {R32:"Round of 32",R16:"Round of 16",QF:"Quarter-final",SF:"S
 // Scores auto-filled by live API; manually override here if needed: SCORES["g0"]=[2,1]
 const SCORES = {};
 const LIVE   = {}; // id -> minute string for in-play matches
+const APIRAW = {}; // board id -> raw API match object (used to resolve penalty winners)
+let STAND = {}, QUAL = {}, RES = {}, KOWIN = {}, KOLOSE = {};
+let GVIEW = {};
+let ndTarget = null, ndName = "";
+let curDetailId = null;
 
 // ===================== MODEL =====================
 const byNo = {}, ALL = [];
@@ -457,12 +536,26 @@ function P(iso) {
 }
 function t12(h,mi) { const ap=h<12?"AM":"PM"; let hr=h%12; if(!hr)hr=12;
   return {hm:hr+(mi?":"+String(mi).padStart(2,"0"):""),ap}; }
-function timeBNE(iso) { const p=P(iso); return t12(p.h,p.mi); }
-function dShort(iso) { const p=P(iso); return DAYS[p.wd]+" "+p.da+" "+MON[p.mo-1]; }
-function dLong(iso)  { const p=P(iso); return DAYL[p.wd]+" "+p.da+" "+MON[p.mo-1]; }
-function dDM(iso)    { const p=P(iso); return String(p.da).padStart(2,"0")+"/"+String(p.mo).padStart(2,"0"); }
-function t24(iso)    { const p=P(iso); return String(p.h).padStart(2,"0")+":"+String(p.mi).padStart(2,"0"); }
-function alarm(iso)  { const p=P(iso); const m=p.h*60+p.mi;
+// ----- display time zone (June–July: AU has no daylight saving) -----
+const ZONES = {
+  BNE:{label:"Brisbane", abbr:"AEST", off:600},
+  SYD:{label:"Sydney",    abbr:"AEST", off:600},
+  MEL:{label:"Melbourne", abbr:"AEST", off:600},
+  ADL:{label:"Adelaide",  abbr:"ACST", off:570},
+  DRW:{label:"Darwin",    abbr:"ACST", off:570},
+  PER:{label:"Perth",     abbr:"AWST", off:480}
+};
+let ZONE = (()=>{ try{ return localStorage.getItem("wc26zone")||"BNE"; }catch(_){ return "BNE"; } })();
+if(!ZONES[ZONE]) ZONE="BNE";
+function utcLabel(off){ const h=Math.floor(off/60), m=off%60; return "UTC+"+(m?h+":"+String(m).padStart(2,"0"):h); }
+function PZ(iso){ const d=new Date(Date.parse(iso)+ZONES[ZONE].off*60000);
+  return {y:d.getUTCFullYear(),mo:d.getUTCMonth()+1,da:d.getUTCDate(),h:d.getUTCHours(),mi:d.getUTCMinutes(),wd:d.getUTCDay()}; }
+function timeBNE(iso) { const p=PZ(iso); return t12(p.h,p.mi); }
+function dShort(iso) { const p=PZ(iso); return DAYS[p.wd]+" "+p.da+" "+MON[p.mo-1]; }
+function dLong(iso)  { const p=PZ(iso); return DAYL[p.wd]+" "+p.da+" "+MON[p.mo-1]; }
+function dDM(iso)    { const p=PZ(iso); return String(p.da).padStart(2,"0")+"/"+String(p.mo).padStart(2,"0"); }
+function t24(iso)    { const p=PZ(iso); return String(p.h).padStart(2,"0")+":"+String(p.mi).padStart(2,"0"); }
+function alarm(iso)  { const p=PZ(iso); const m=p.h*60+p.mi;
   return m<420?"var(--amber)":m<660?"var(--gold)":"var(--green)"; }
 function venueLocal(o) {
   const off=TZ[o.city]; if(off===undefined) return null;
@@ -517,6 +610,122 @@ const CY = (TOP+BOT)/2;
 pos[104] = {x:FINALX,y:CY-26, side:"C",ch:[101,102],w:FINALW};
 pos[103] = {x:FINALX,y:CY+182,side:"C",w:FINALW};
 
+// ===================== STANDINGS + BRACKET RESOLUTION =====================
+function computeStandings() {
+  STAND = {}; QUAL = {};
+  "ABCDEFGHIJKL".split("").forEach(g => {
+    const teams = [...new Set(GROUP_MATCHES.filter(x=>x[4]===g).flatMap(x=>[x[2],x[3]]))];
+    const tab = {}; teams.forEach(t => tab[t] = {team:t,P:0,W:0,D:0,L:0,GF:0,GA:0,Pts:0});
+    let played=0, total=0;
+    ALL.filter(o => !o.isKo && o.grp===g).forEach(o => {
+      total++;
+      const sc = SCORES[o.id]; if(!sc) return;
+      played++;
+      const [x,y]=sc, A=tab[o.a], B=tab[o.b];
+      A.P++; B.P++; A.GF+=x; A.GA+=y; B.GF+=y; B.GA+=x;
+      if(x>y){ A.W++; B.L++; A.Pts+=3; }
+      else if(x<y){ B.W++; A.L++; B.Pts+=3; }
+      else { A.D++; B.D++; A.Pts++; B.Pts++; }
+    });
+    const rows = teams.map(t=>tab[t]).sort((a,b)=>
+      b.Pts-a.Pts || (b.GF-b.GA)-(a.GF-a.GA) || b.GF-a.GF || a.team.localeCompare(b.team));
+    rows.forEach((r,i)=>r.pos=i+1);
+    const complete = total>0 && played===total;
+    STAND[g] = {rows, complete, played};
+    if(complete) QUAL[g] = [rows[0].team, rows[1].team, rows[2].team];
+  });
+}
+function thirdStat(g){ const r=STAND[g].rows[2]; return {team:r.team, g, Pts:r.Pts, GD:r.GF-r.GA, GF:r.GF}; }
+
+function resolveBracket() {
+  RES = {}; KOWIN = {}; KOLOSE = {};
+  "ABCDEFGHIJKL".split("").forEach(g => {
+    if(QUAL[g]){ RES["Winner "+g]=QUAL[g][0]; RES["Runner-up "+g]=QUAL[g][1]; }
+  });
+  // eight best third-placed teams, assigned to their allowed R32 slots
+  const thirds = Object.keys(QUAL).map(thirdStat)
+    .sort((a,b)=> b.Pts-a.Pts || b.GD-a.GD || b.GF-a.GF).slice(0,8);
+  const used = new Set();
+  KO_MATCHES.forEach(m => {
+    [2,3].forEach(idx => {
+      const slot=m[idx]; if(!/^3rd/.test(slot)) return;
+      const allowed = slot.replace("3rd ","").split("/");
+      const pick = thirds.find(t => !used.has(t.team) && allowed.includes(t.g));
+      if(pick){ used.add(pick.team); RES[slot+"@"+m[6]]=pick.team; }
+    });
+  });
+  // cascade knockout winners/losers
+  for(let pass=0; pass<6; pass++){
+    KO_MATCHES.forEach(m => {
+      const no=m[6], o=byNo[no];
+      const a=resolveSlot(m[2],no), b=resolveSlot(m[3],no);
+      if(!a||!b) return;
+      const sc=SCORES[o.id]; if(!sc) return;
+      let w,l;
+      if(sc[0]>sc[1]){ w=a; l=b; }
+      else if(sc[1]>sc[0]){ w=b; l=a; }
+      else { const wn=APIRAW[o.id]?.score?.winner;
+        if(wn==="HOME_TEAM"){w=a;l=b;} else if(wn==="AWAY_TEAM"){w=b;l=a;} }
+      if(w){ KOWIN[no]=w; KOLOSE[no]=l; }
+    });
+  }
+}
+function resolveSlot(slot, no){
+  let m;
+  if(/^3rd/.test(slot))                  return RES[slot+"@"+no] || null;
+  if((m=slot.match(/^Winner (\d+)$/)))   return KOWIN[m[1]]  || null;
+  if((m=slot.match(/^Loser (\d+)$/)))    return KOLOSE[m[1]] || null;
+  if(RES[slot])                          return RES[slot];          // Winner/Runner-up of a group
+  if(known(slot))                        return slot;               // already a real team
+  return null;
+}
+function slotDisplay(o, slot){ return resolveSlot(slot, o.no) || slot; }
+
+// ===================== NEXT MATCH DAY (centre) =====================
+function renderNextDay(){
+  const el=document.getElementById("nextday"); if(!el) return;
+  const now=Date.now();
+  const up = ALL.filter(o => Date.parse(o.iso) > now - 7200000) // include games kicked off <2h ago
+               .sort((a,b)=> Date.parse(a.iso)-Date.parse(b.iso));
+  const future = up.filter(o => Date.parse(o.iso) > now);
+  if(!future.length){ el.innerHTML = `<div class="nd-done">Tournament complete &#x1F3C6;</div>`; ndTarget=null; return; }
+  const next = future[0];
+  const np = PZ(next.iso);
+  const key = np.y+"-"+np.mo+"-"+np.da;
+  const day = up.filter(o => { const q=PZ(o.iso); return q.y+"-"+q.mo+"-"+q.da===key; });
+  const nm = (o,s) => { const r=slotDisplay(o,s); return known(r) ? `${FLAG[r]} ${CODE[r]}` : token(s); };
+  ndTarget = Date.parse(next.iso);
+  ndName = `${nm(next,next.a)} v ${nm(next,next.b)}`;
+  el.innerHTML = `
+    <div class="nd-top">
+      <div class="nd-label">Next match day &middot; ${ZONES[ZONE].label} time</div>
+      <div class="nd-date">${DAYL[np.wd]} <b>${np.da} ${MON[np.mo-1]}</b></div>
+    </div>
+    <div class="nd-count" id="ndcount"></div>
+    <div class="nd-list">
+      ${day.slice(0,6).map(o => `<div class="nd-row" data-id="${o.id}">
+        <span class="nd-t">${t24(o.iso)}</span>
+        <span class="nd-m">${nm(o,o.a)} <em>v</em> ${nm(o,o.b)}</span>
+        <span class="nd-g">${o.isKo?(STAGE_NAME[o.grp]||o.grp):"Grp "+o.grp}</span>
+      </div>`).join("")}
+      ${day.length>6 ? `<div class="nd-more">+${day.length-6} more that day</div>` : ""}
+    </div>`;
+  tickCount();
+}
+function tickCount(){
+  const el=document.getElementById("ndcount"); if(!el) return;
+  if(ndTarget==null){ el.innerHTML=""; return; }
+  let diff = ndTarget - Date.now();
+  if(diff<=0){ el.innerHTML = `<span class="kob">Kicking off now &#x26BD;</span>`; return; }
+  const d=Math.floor(diff/86400000); diff-=d*86400000;
+  const h=Math.floor(diff/3600000);  diff-=h*3600000;
+  const m=Math.floor(diff/60000);    diff-=m*60000;
+  const s=Math.floor(diff/1000);
+  const seg=(n,l)=>`<span class="cseg"><b>${String(n).padStart(2,"0")}</b><i>${l}</i></span>`;
+  el.innerHTML = `<div class="cd-to">Kick-off in &mdash; <b>${ndName}</b></div>
+    <div class="cd-units">${d?seg(d,"days"):""}${seg(h,"hrs")}${seg(m,"min")}${seg(s,"sec")}</div>`;
+}
+
 // ===================== RENDER =====================
 function groupCard(g) {
   const ms    = ALL.filter(o => !o.isKo && o.grp===g);
@@ -534,9 +743,36 @@ function groupCard(g) {
       <span class="gm"><i>${FLAG[o.a]}</i>${CODE[o.a]}<em>v</em><i>${FLAG[o.b]}</i>${CODE[o.b]}</span>
       ${res}</div>`;
   }).join("");
+  const st = STAND[g];
+  let foot = "";
+  if(st && st.played>0){
+    const r1=st.rows[0], r2=st.rows[1];
+    foot = `<div class="gstand${st.complete?" locked":""}">
+      <span class="qln q1"><span class="qdot"></span>${CODE[r1.team]} <i>${r1.Pts}p</i></span>
+      <span class="qln q2"><span class="qdot"></span>${CODE[r2.team]} <i>${r2.Pts}p</i></span>
+      <span class="qtag">${st.complete?"Through":"As it stands"}</span></div>`;
+  }
+  const view = GVIEW[g] || "fix";
+  const toggle = `<span class="gtog">`+
+    `<button data-gv="fix" data-g="${g}" class="${view==="fix"?"on":""}">Fixtures</button>`+
+    `<button data-gv="tab" data-g="${g}" class="${view==="tab"?"on":""}">Table</button></span>`;
+  const body = view==="tab" ? standTable(g) : (rows + foot);
   return `<div class="gcard${soc?" soc":""}">
-    <div class="ghead"><span class="gnm">Group ${g}</span><span class="gflags">${flags}</span></div>
-    ${rows}</div>`;
+    <div class="ghead"><span class="gnm">Group ${g}</span>${toggle}</div>
+    ${body}</div>`;
+}
+
+function standTable(g){
+  const st = STAND[g];
+  if(!st){ return `<div class="stable"><div class="stnone">No matches played yet</div></div>`; }
+  const head = `<div class="strow sthead"><span>#</span><span class="stt">Team</span>`+
+    `<span>P</span><span>W</span><span>D</span><span>L</span><span>GF</span><span>GA</span><span class="stp">Pt</span></div>`;
+  const rows = st.rows.map(r => `<div class="strow${r.pos<=2?" q"+r.pos:""}">`+
+    `<span>${r.pos}</span>`+
+    `<span class="stt"><i>${FLAG[r.team]||""}</i>${CODE[r.team]}</span>`+
+    `<span>${r.P}</span><span>${r.W}</span><span>${r.D}</span><span>${r.L}</span>`+
+    `<span>${r.GF}</span><span>${r.GA}</span><span class="stp">${r.Pts}</span></div>`).join("");
+  return `<div class="stable">${head}${rows}</div>`;
 }
 
 function label(txt,x,w){ return `<div class="roundlabel" style="left:${x}px;top:150px;width:${w}px">${txt}</div>`; }
@@ -548,20 +784,23 @@ function koBox(no) {
   const isLive   = lv!=null;
   const isFinal  = o.grp==="FINAL", isBronze=o.grp==="3RD";
   const cls = "kbox"+(isFinal?" final":"")+(isBronze?" bronze":"")+(isLive?" kbox-live":"");
+  const nA=slotDisplay(o,o.a), nB=slotDisplay(o,o.b);
   function slot(name,idx) {
-    const tk  = token(name);
-    const scv = sc      ? `<span class="ksc">${sc[idx]}</span>` :
-                isLive  ? `<span class="ksc" style="color:var(--green)">-</span>` :
-                          `<span class="wcell"></span>`;
-    return `<div class="kteam"><span class="tk">${tk}</span><span class="knm">${shortName(name)}</span>${scv}</div>`;
+    const real = known(name);
+    const tk   = token(name);
+    const nm   = real ? `${FLAG[name]} ${name}` : shortName(name);
+    const scv  = sc      ? `<span class="ksc">${sc[idx]}</span>` :
+                 isLive  ? `<span class="ksc" style="color:var(--green)">-</span>` :
+                           `<span class="wcell"></span>`;
+    return `<div class="kteam${real?" real":""}"><span class="tk">${tk}</span><span class="knm">${nm}</span>${scv}</div>`;
   }
   const stgTxt  = isFinal?"FINAL":isBronze?"3RD PLACE":STAGE_NAME[o.grp];
   const timeStr = isLive ? `<span style="color:var(--green);font-size:13px">${lv?lv+"'":"LIVE"}</span>` : t24(o.iso);
   return `<div class="${cls}" data-id="${o.id}" style="left:${p.x}px;top:${p.y-BOXH/2}px;width:${w}px;min-height:${BOXH}px">
     <span class="alarm" style="background:${alarm(o.iso)}"></span>
     <div class="khd"><span class="stg">${stgTxt}</span><span class="mno">M${no}</span></div>
-    ${slot(o.a,0)}
-    ${slot(o.b,1)}
+    ${slot(nA,0)}
+    ${slot(nB,1)}
     <div class="kfoot"><span class="kdate">${dDM(o.iso)}</span>
       <span class="ktime">${timeStr}</span></div>
   </div>`;
@@ -569,6 +808,9 @@ function koBox(no) {
 const allNos = Object.keys(byNo).map(Number);
 
 function renderAll() {
+  computeStandings();
+  resolveBracket();
+  renderNextDay();
   document.getElementById("gpanelL").innerHTML = "ABCDEF".split("").map(groupCard).join("");
   document.getElementById("gpanelR").innerHTML = "GHIJKL".split("").map(groupCard).join("");
   document.getElementById("bracket").innerHTML = allNos.map(koBox).join("") +
@@ -609,6 +851,8 @@ const TLALOOKUP = {};
 ALL.forEach(o => {
   if (CODE[o.a] && CODE[o.b]) TLALOOKUP[CODE[o.a]+"|"+CODE[o.b]] = o.id;
 });
+// Knockout boxes have placeholder teams, so match those by kick-off time instead
+const KOBOXES = Object.values(byNo).map(o => ({ no:o.no, t:Date.parse(o.iso) }));
 
 // Name normalisation fallback
 const TNORM = {
@@ -647,7 +891,13 @@ async function fetchScores() {
         id = TLALOOKUP[(CODE[ha]||ha)+"|"+(CODE[aa]||aa)] ||
              TLALOOKUP[(CODE[aa]||aa)+"|"+(CODE[ha]||ha)];
       }
+      if (!id && m.stage && m.stage!=="GROUP_STAGE" && m.utcDate) {
+        const mt=Date.parse(m.utcDate); let best=null, bd=Infinity;
+        KOBOXES.forEach(k => { const dd=Math.abs(k.t-mt); if(dd<bd){ bd=dd; best=k; } });
+        if (best && bd < 6*3600000) id = "m"+best.no;
+      }
       if (!id) return;
+      APIRAW[id]=m;
       const live = m.status==="IN_PLAY"||m.status==="PAUSED";
       const done = m.status==="FINISHED";
       if (live) { LIVE[id]=String(m.minute||""); nlive++; }
@@ -685,10 +935,13 @@ function teamBlock(name) {
 }
 function openDetail(id) {
   const o=MAP[id]; if(!o) return;
+  curDetailId = id;
   const sc=SCORES[o.id], lv=LIVE[o.id];
   const t=timeBNE(o.iso), vl=venueLocal(o);
+  const nA=slotDisplay(o,o.a), nB=slotDisplay(o,o.b);
   const stg=o.isKo?(o.grp==="FINAL"?"Final":o.grp==="3RD"?"Third place play-off":STAGE_NAME[o.grp]):"Group "+o.grp;
   const isLive=lv!=null;
+  const z=ZONES[ZONE];
   const mid = sc     ? `<div class="dvs score">${sc[0]} &ndash; ${sc[1]}</div>` :
                isLive ? `<div class="dvs live">${lv?lv+"'":"LIVE"}</div>` :
                         `<div class="dvs">v</div>`;
@@ -698,9 +951,9 @@ function openDetail(id) {
   detail.innerHTML = `
     <div class="dhead${o.soc?" soc":""}"><span class="dstg">${stg}</span>
       <span class="dmno">${o.isKo?"Match "+o.no:"Match-day"}</span></div>
-    <div class="dmatch">${teamBlock(o.a)}${mid}${teamBlock(o.b)}</div>
+    <div class="dmatch">${teamBlock(nA)}${mid}${teamBlock(nB)}</div>
     <div class="dmeta">
-      <div class="drow"><span class="dk">Brisbane</span><span class="dv"><b>${t.hm}</b><span class="ap"> ${t.ap}</span> &nbsp;<small>${dLong(o.iso)}</small></span></div>
+      <div class="drow"><span class="dk">${z.label}</span><span class="dv"><b>${t.hm}</b><span class="ap"> ${t.ap}</span> &nbsp;<small>${dLong(o.iso)} &middot; ${z.abbr}</small></span></div>
       ${vl?`<div class="drow"><span class="dk">Local kick-off</span><span class="dv">${vl.txt} <small>${vl.zone}</small></span></div>`:""}
       <div class="drow"><span class="dk">Venue</span><span class="dv">${o.venue} <small>&middot; ${o.city}</small></span></div>
       ${resultRow}
@@ -708,8 +961,11 @@ function openDetail(id) {
     <div class="dhint">Click anywhere outside to close</div>`;
   scrim.classList.add("on");
 }
+
 function closeDetail(){ scrim.classList.remove("on"); }
 document.getElementById("poster").addEventListener("click", e => {
+  const tog=e.target.closest("[data-gv]");
+  if(tog){ GVIEW[tog.dataset.g]=tog.dataset.gv; renderAll(); return; }
   const el=e.target.closest("[data-id]"); if(el) openDetail(el.dataset.id);
 });
 scrim.addEventListener("click", e => { if(e.target===scrim) closeDetail(); });
@@ -750,6 +1006,29 @@ addEventListener("pointerup",   ()  => { dragging=false; poster.style.cursor="";
 addEventListener("dblclick",    e   => { if(e.target.closest(".kbox")||e.target.closest(".grow")) return; userZoom=false; fit(); });
 
 setTimeout(() => { document.getElementById("zoomhint").style.opacity="0"; }, 4200);
+
+// ===================== TIMEZONE SWITCHER + TIMERS =====================
+function syncZoneUI(){
+  const z=ZONES[ZONE], k=document.getElementById("tzkick");
+  if(k) k.innerHTML = `<i></i>${z.label} Time &middot; ${z.abbr} (${utcLabel(z.off)})<i></i>`;
+}
+(function initTz(){
+  const sel=document.getElementById("tzsel");
+  sel.innerHTML = Object.keys(ZONES).map(k => `<option value="${k}">${ZONES[k].label} &middot; ${ZONES[k].abbr}</option>`).join("");
+  sel.value = ZONE;
+  sel.addEventListener("change", () => {
+    ZONE = sel.value;
+    try { localStorage.setItem("wc26zone", ZONE); } catch(_){}
+    syncZoneUI();
+    renderAll();
+    if(scrim.classList.contains("on") && curDetailId) openDetail(curDetailId);
+  });
+  document.getElementById("tzpick").addEventListener("pointerdown", e => e.stopPropagation());
+  syncZoneUI();
+})();
+
+setInterval(tickCount, 1000);
+setInterval(renderNextDay, 60000);
 </script>
 
 <template id="__bundler_thumbnail">

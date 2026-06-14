@@ -13,11 +13,9 @@ const FALLBACK_KEY = "f3fe552977524a968559871dad80a7de";
 
 export default async function handler(req, res) {
   const key = process.env.FOOTBALL_DATA_KEY || FALLBACK_KEY;
+  const url = "https://api.football-data.org/v4/competitions/WC/matches";
   try {
-    const r = await fetch(
-      "https://api.football-data.org/v4/competitions/WC/matches",
-      { headers: { "X-Auth-Token": key } }
-    );
+    const r = await fetch(url, { headers: { "X-Auth-Token": key } });
     const body = await r.text();
     res.setHeader("content-type", "application/json");
     res.setHeader("cache-control", "public, max-age=30");
