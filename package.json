@@ -1,0 +1,15 @@
+{
+  "name": "world-cup-2026-fixture",
+  "version": "1.0.0",
+  "description": "World Cup 2026 Fixture Wallchart",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Build complete'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  },
+  "author": "",
+  "license": "MIT"
+}
